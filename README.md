@@ -51,8 +51,9 @@ sudo systemctl start apache2
 - Crie um diretório para seu dominio
 
 ```bash
-sudo mkdir /var/www/your_domain
+sudo mkdir /var/www/html/your_domain
 ```
+- Use your_domain/Projeto_name/nome_do_projeto.php no navegador
 
 Após isso, clone o projeto para um diretório
 
