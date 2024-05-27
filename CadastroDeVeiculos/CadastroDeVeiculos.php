@@ -209,7 +209,7 @@
                             <button type="submit" value="Confirmar" name="fabricação2013" class="btn btn-success">Fabricação >= 2013</button>
                         </div>
                         <div class="col">
-                            <button type="limpa" value="Confirmar" name="limpa" class="btn btn-danger">Limpar Ve</button>
+                            <button type="limpa" value="Confirmar" name="limpa" class="btn btn-danger">Limpar Veículos</button>
                         </div>
 
                     </div>
