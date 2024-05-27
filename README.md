@@ -6,6 +6,8 @@ Diretorios existentes e o que contém:
 
 Projeto 1 - ConsultaSalário: Programa feito para consultar através das horas trabalhadas e remuneradas o salário e quanto é descontado em Imposto de Renda, INSS e Sindicato;
 
+Projeto 1 - CadastroDeVeículos: Programa feito para cadastrar veículos dizendo o modelo do carro, frabricante, cor do veículo, a quantidade de portas e o ano do carro. De pois de inseridos estão feitas alguns exemplos de consultas como: Modelo e ano dos carros cadastrados, Modelos na cor prata, Veículos-Cores-quantidadeDePortas, Veículos da Ford e Veículos com o ano de fabricação igual ou superior a 2013.
+
 ## Pré-requisitos
 
 Primeiro, baixe os pacotes da sua distribuição, no exemplo será no ubuntu 22.04
