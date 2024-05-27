@@ -30,8 +30,6 @@
     $portas4 = $_POST['portas'];
     $ano5 = $_POST['ano'];
 
-    
-
     if (isset($_POST['submit'])) {
         if (empty($_POST['modeloCar'])) {
             $erroModelo = '<p class="text-danger">Informe o modelo do carro.</p>';
@@ -61,12 +59,92 @@
             $_SESSION['contador']++;
 
             echo '<p class="text-success">Carro adicionado com sucesso.</p>';
-            echo '<p class="text-success">' . var_dump($_SESSION['carros']) . '</p>';
+
+            
 
         }
+        
 
 
     }
+    // $arrayValida = [];
+    // for( $i = 0; $i < count($_SESSION['carros']); $i++){
+    //     $fabricante = $_SESSION['carros'][$i]['Fabricante'];
+    //     if(!in_array($fabricante, $arrayValida)){
+    //         array_push($arrayValida, $fabricante);
+    //     }
+    //     echo '<br>';
+    //     var_dump($fabricante);
+    //     }
+    //     echo '<br><br>';
+    //     for( $i = 0; $i < count($arrayValida); $i++){
+    //         var_dump($arrayValida[$i]);
+    //     }
+
+    if (isset($_POST['modeloEano'])) {
+        echo '<h1> Modelo e ano dos carros cadastrados </h1>';
+        for( $i = 0; $i < count($_SESSION['carros']); $i++){
+                $fabricante = [$_SESSION['carros'][$i]['Modelo do carro'], $_SESSION['carros'][$i]['Ano']];
+            echo '<br>';
+            echo '<p>Modelo do carro: '.$fabricante[0].' <br>Ano: '. $fabricante[1].'</p>';
+            }
+    }
+    if (isset($_POST['corPrata'])) {
+        $arrayValida = [];
+        echo '<h1> Modelos na cor prata </h1>';
+        for( $i = 0; $i < count($_SESSION['carros']); $i++){
+                if ($_SESSION['carros'][$i]['Cor'] == 'prata'){
+                    $modelo = $_SESSION['carros'][$i]['Modelo do carro'];
+                    if(!in_array($modelo, $arrayValida)){
+                        array_push($arrayValida, $modelo);
+                    }
+                }
+            
+            }
+        for( $i = 0; $i < count($arrayValida); $i++){
+            echo '<p>'.$arrayValida[$i].'</p>';
+        }    
+    }
+    if (isset($_POST['VeiculoCorPortas'])) {
+        echo '<h1> Veículos, suas cores e a quantidade de portas </h1>';
+        for( $i = 0; $i < count($_SESSION['carros']); $i++){
+                $VeiculoCorPortas = [$_SESSION['carros'][$i]['Modelo do carro'], $_SESSION['carros'][$i]['Cor'], $_SESSION['carros'][$i]['Portas']];
+            echo '<br>';
+            echo '<p>Modelo do carro: '.$VeiculoCorPortas[0].' <br>Cor: '. $VeiculoCorPortas[1].' <br>Portas: '. $VeiculoCorPortas[2].'</p>';
+            }
+        
+    }
+    
+    if (isset($_POST['veiculosFord'])) {
+        $arrayValida = [];
+        echo '<h1> Veículos da Ford </h1>';
+        for( $i = 0; $i < count($_SESSION['carros']); $i++){
+            
+                if ($_SESSION['carros'][$i]['Fabricante'] == 'Ford'){
+                        $modelo = $_SESSION['carros'][$i]['Modelo do carro'];
+                        if(!in_array($modelo, $arrayValida)){
+                            array_push($arrayValida, $modelo);
+                        }
+                        
+                    
+               
+            }
+            }
+            for( $i = 0; $i < count($arrayValida); $i++){
+                echo '<p>'.$arrayValida[$i].'</p>';
+            }
+            
+    }
+    if (isset($_POST['fabricação2013'])) {
+        echo '<h1> Veículos com o ano de fabricação igual ou superior a 2013 </h1>';
+        for( $i = 0; $i < count($_SESSION['carros']); $i++){
+            if ($_SESSION['carros'][$i]['Ano'] >= 2013){
+                echo '<p>'.$_SESSION['carros'][$i]['Modelo do carro'].'</p>';
+            }
+            
+        }
+    }
+
 
 
     ?>
@@ -113,26 +191,25 @@
                     </div>
                     <div class="row mb-3 g-3">
                         <div class="col">
-                            <button type="" value="Confirmar" name="" class="btn btn-success">Confirmar</button>
+                            <button type="submit" value="Confirmar" name="modeloEano" class="btn btn-success">Modelos e Anos</button>
                         </div>
                         <div class="col">
-                            <button type="" value="Confirmar" name="" class="btn btn-success">Confirmar</button>
+                            <button type="submit" value="Confirmar" name="corPrata" class="btn btn-success">Cor Prata</button>
                         </div>
                         <div class="col">
-                            <button type="" value="Confirmar" name="" class="btn btn-success">Confirmar</button>
+                            <button type="submit" value="Confirmar" name="VeiculoCorPortas" class="btn btn-success">Veículos, cor e qtde portas</button>
                         </div>
 
                     </div>
                     <div class="row mb-3 g-3">
                         <div class="col">
-                            <button type="" value="Confirmar" name="" class="btn btn-success">Confirmar</button>
+                            <button type="submit" value="Confirmar" name="veiculosFord" class="btn btn-success">Veículos Ford</button>
                         </div>
                         <div class="col">
-                            <button type="" value="Confirmar" name="" class="btn btn-success">Confirmar</button>
+                            <button type="submit" value="Confirmar" name="fabricação2013" class="btn btn-success">Fabricação >= 2013</button>
                         </div>
                         <div class="col">
-                            <button type="limpa" value="Confirmar" name="limpa" class="btn btn-danger">Limpar
-                                Cache</button>
+                            <button type="limpa" value="Confirmar" name="limpa" class="btn btn-danger">Limpar Veículos</button>
                         </div>
 
                     </div>
