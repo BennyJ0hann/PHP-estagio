@@ -77,6 +77,7 @@ if (isset($_POST['submit'])) {
             <div class="col-6">
                 <h1>Simulador de Parcelamento</h1>
                 <div>
+                    
                     <label>Valor da dívida</label>
                     <?php echo $numDividaErro ?>
                     <div class="input-group mb-4">
