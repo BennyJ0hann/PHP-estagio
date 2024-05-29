@@ -10,62 +10,103 @@
         .full-height {
             height: 100vh;
         }
+        .input-group-text {
+    cursor: pointer;
+}
     </style>
 </head>
+<?php
+
+$numParcela = 0;
+$numDivida = $_POST['divida'];
+
+if (isset($_POST['submit'])) {
+    if (empty($numDivida)) {
+        $numDividaErro = '<p class="text-danger">Informe o valor pedido.</p>';
+    } else {
+
+        $numParcela = $_POST['parcelas'];
+        
+        $numJuros = $_POST['juros'];
+
+
+        echo '<p class="text-white-50" style="position: absolute; top: 30px; left: 50px;">Você selecionou: ' . $numParcela . ' parcelas.</p>';
+        echo '<p class="text-white-50" style="position: absolute; top: 10px; left: 50px">Sua dívida é de R$ ' . $numDivida . '.</p>';
+        if ($numJuros == null) {
+            $dividaTotal = $numDivida * pow(1 + 0.0279, $numParcela);
+            $txtTotalDevido = "<p>R$ " . number_format($dividaTotal, 2,',', '.') . ".</p>";
+
+            $valorParcela = $dividaTotal/$numParcela;
+            $txtValorParcela = "<p>R$ " . number_format($valorParcela, 2,',', '.') . ".</p>";
+
+            $valorTotalJuros = $dividaTotal - $numDivida;
+            $txtValorTotalJuros = "<p>R$ " . number_format($valorTotalJuros, 2,',', '.') . ".</p>";
+
+        echo '<p class="text-white-50" style="position: absolute; top: 50px; left: 50px">O juros é de 2,79%.</p>';
+
+        } else {
+
+            $dividaTotal = $numDivida * pow(1 + ($numJuros/100), $numParcela);
+            $txtTotalDevido = "<p>R$ " . number_format($dividaTotal, 2,',', '.') . ".</p>";
+
+            $valorParcela = $dividaTotal/$numParcela;
+            $txtValorParcela = "<p>R$ " . number_format($valorParcela, 2,',', '.') . ".</p>";
+
+            $valorTotalJuros = $dividaTotal - $numDivida;
+            $txtValorTotalJuros = "<p>R$ " . number_format($valorTotalJuros, 2,',', '.') . ".</p>";
+
+            echo '<p class="text-white-50" style="position: absolute; top: 50px; left: 50px">O juros é de ' . $numJuros . '%.</p>';
+
+        }
+
+
+    }
+}
+
+
+?>
 
 <body class="bg-dark text-white">
 
-    <div class="d-flex justify-content-center full-height">
-        <form class="row row-cols-lg-auto g-3 align-items-center" role="form" method="post"
+    <div class="container d-flex justify-content-center full-height">
+    <div class=" mb-2 bg-secondary">
+        <form class="row align-items-center" role="form" method="post"
             action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <div>
+            <div class="col">
+            </div>
+            <div class="col-6">
                 <h1>Simulador de Parcelamento</h1>
                 <div>
                     <label>Valor da dívida</label>
+                    <?php echo $numDividaErro ?>
                     <div class="input-group mb-4">
 
                         <div class="input-group-text">R$</div>
                         <input type="text" class="form-control" placeholder="00,00" aria-label="First name"
-                            name="dinheiro" id="dinheiro">
+                            name="divida" id="dinheiro">
+                            
                     </div>
                     <label>Taxa de juros</label>
                     <div class="input-group mb-4">
                         <input type="text" class="form-control" value="2,79%" aria-label="Disabled input example"
-                            disabled readonly>
-                        <div class="input-group-text">🔒</div>
+                            disabled readonly name="juros" id="juros" >
+                        <div class="input-group-text" id="juros-button">🔒</div>
                     </div>
                     <label for="inputState" class="form-label">Parcelas</label>
                     <div class="row-md-4 mb-4">
 
                         <select id="inputState" class="form-select" name="parcelas">
-                            <option selected>1</option>
-                            <option selected>2</option>
-                            <option selected>3</option>
-                            <option selected>4</option>
-                            <option selected>5</option>
-                            <option selected>6</option>
-                            <option selected>7</option>
-                            <option selected>8</option>
-                            <option selected>9</option>
-                            <option selected>10</option>
-                            <option selected>11</option>
-                            <option selected>12</option>
-                            <option selected>13</option>
-                            <option selected>14</option>
-                            <option selected>15</option>
-                            <option selected>16</option>
-                            <option selected>17</option>
-                            <option selected>18</option>
-                            <option selected>19</option>
-                            <option selected>20</option>
-                            <option selected>21</option>
-                            <option selected>22</option>
-                            <option selected>23</option>
-                            <option selected>24</option>
+                            <?php
+                            for ($i = 1; $i <= 24; $i++) {
+                                echo "<option>" . $i . "</option>";
+                                global $numParcela;
+                                $numParcela = $i;
+                            };
+                            ?>
 
                         </select>
                     </div>
-                    <div class="row mb-3 g-3">
+                    <div class="row mb-5 g-3">
                         <div class="col">
                             <button type="submit" value="Confirmar" name="submit"
                                 class="btn btn-primary">Calcular</button>
@@ -75,18 +116,33 @@
                 </div>
                 <div class="container">
                     <div class="row row-cols-2">
-                        <div class="col">Column</div>
-                        <div class="col">Column</div>
-                        <div class="col">Column</div>
-                        <div class="col">Column</div>
+                        <div class="mb-4">Valor total da dívida:</div>
+                        <div class="">
+                            <?php 
+                            echo $txtTotalDevido;
+                            ?>
+                        </div>
+                        <div class="mb-4">Valor de cada parcela mensal:</div>
+                        <div class="">
+                            <?php 
+                            echo $txtValorParcela;                    
+                            ?>
+                        </div>
+                        <div class="mb-4">Valor total em juros:</div>
+                        <div class="">
+                            <?php 
+                            echo $txtValorTotalJuros;                    
+                            ?></div>
                     </div>
                 </div>
 
             </div>
+            <div class="col">
+            </div>
 
 
         </form>
-
+</div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -99,11 +155,23 @@
         crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
-            $('#dinheiro').mask('#.##0,00', { reverse: true });
+            $('#dinheiro').mask('###0,00', { reverse: true });
         });
         function validateNumberInput(input) {
             input.value = input.value.replace(/[^0-9.]/g, '');
         }
+        document.getElementById('juros-button').addEventListener('click', function() {
+        var input = document.getElementById('juros');
+        if (input.disabled) {
+            input.disabled = false;
+            input.readOnly = false;
+            this.innerHTML = '🔓';
+        } else {
+            input.disabled = true;
+            input.readOnly = true;
+            this.innerHTML = '🔒';
+        }
+    });
     </script>
 </body>
 
