@@ -11,8 +11,15 @@
             height: 100vh;
         }
         .input-group-text {
-    cursor: pointer;
-}
+            cursor: pointer;
+        }
+        .fixed-size {
+            width: 550px;
+            max-width: 100%;
+            height: 600px;
+            max-width: 100%;
+        }
+        
     </style>
 </head>
 <?php
@@ -66,84 +73,68 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<body class="bg-dark text-white">
+<body class="bg-dark  text-white">
+<h1 class="text-center" >Simulador de Parcelamento</h1>
 
-    <div class="container d-flex justify-content-center full-height">
-    <div class=" mb-2 bg-secondary">
-        <form class="row align-items-center" role="form" method="post"
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <div class="col">
-            </div>
-            <div class="col-6">
-                <h1>Simulador de Parcelamento</h1>
-                <div>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100 " >
+        
+    
+        <div class="fixed-size mb-2 bg-secondary p-4 rounded-lg ">
+        
+            <form class="row align-items-center " role="form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+                <div class="col-12">
                     
-                    <label>Valor da dívida</label>
-                    <?php echo $numDividaErro ?>
-                    <div class="input-group mb-4">
-
-                        <div class="input-group-text">R$</div>
-                        <input type="text" class="form-control" placeholder="00,00" aria-label="First name"
-                            name="divida" id="dinheiro">
-                            
-                    </div>
-                    <label>Taxa de juros</label>
-                    <div class="input-group mb-4">
-                        <input type="text" class="form-control" value="2,79%" aria-label="Disabled input example"
-                            disabled readonly name="juros" id="juros" >
-                        <div class="input-group-text" id="juros-button">🔒</div>
-                    </div>
-                    <label for="inputState" class="form-label">Parcelas</label>
-                    <div class="row-md-4 mb-4">
-
-                        <select id="inputState" class="form-select" name="parcelas">
-                            <?php
-                            for ($i = 1; $i <= 24; $i++) {
-                                echo "<option>" . $i . "</option>";
-                                global $numParcela;
-                                $numParcela = $i;
-                            };
-                            ?>
-
-                        </select>
-                    </div>
-                    <div class="row mb-5 g-3">
-                        <div class="col">
-                            <button type="submit" value="Confirmar" name="submit"
-                                class="btn btn-primary">Calcular</button>
+                    <div>
+                    <div class="container bg-dark rounded ">
+                        <div class="row row-cols-2 p-3 ">
+                            <div class="">Valor total da dívida:</div>
+                            <div class="">
+                                <?php echo $txtTotalDevido; ?>
+                            </div>
+                            <div class="">Valor de cada parcela mensal:</div>
+                            <div class="">
+                                <?php echo $txtValorParcela; ?>
+                            </div>
+                            <div class="">Valor total em juros:</div>
+                            <div class="">
+                                <?php echo $txtValorTotalJuros; ?>
+                            </div>
                         </div>
                     </div>
-
+                        <label class = "mt-4">Valor da dívida</label>
+                        <?php echo $numDividaErro ?>
+                        <div class="input-group mb-4">
+                            <div class="input-group-text">R$</div>
+                            <input type="text" class="form-control" placeholder="00,00" aria-label="First name" name="divida" id="dinheiro">
+                        </div>
+                        <label>Taxa de juros</label>
+                        <div class="input-group mb-4">
+                            <input type="text" class="form-control" value="2,79%" aria-label="Disabled input example" disabled readonly name="juros" id="juros">
+                            <div class="input-group-text" id="juros-button">🔒</div>
+                        </div>
+                        <label for="inputState" class="form-label">Parcelas</label>
+                        <div class="row-md-4 mb-4">
+                            <select id="inputState" class="form-select" name="parcelas">
+                                <?php
+                                for ($i = 1; $i <= 24; $i++) {
+                                    echo "<option>" . $i . "</option>";
+                                    global $numParcela;
+                                    $numParcela = $i;
+                                };
+                                ?>
+                            </select>
+                        </div>
+                        <div class="row mb-5 g-3">
+                            <div class="col">
+                                <button type="submit" value="Confirmar" name="submit" class="btn btn-primary">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-                <div class="container">
-                    <div class="row row-cols-2">
-                        <div class="mb-4">Valor total da dívida:</div>
-                        <div class="">
-                            <?php 
-                            echo $txtTotalDevido;
-                            ?>
-                        </div>
-                        <div class="mb-4">Valor de cada parcela mensal:</div>
-                        <div class="">
-                            <?php 
-                            echo $txtValorParcela;                    
-                            ?>
-                        </div>
-                        <div class="mb-4">Valor total em juros:</div>
-                        <div class="">
-                            <?php 
-                            echo $txtValorTotalJuros;                    
-                            ?></div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col">
-            </div>
-
-
-        </form>
-</div>
+            </form>
+        </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
