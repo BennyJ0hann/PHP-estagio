@@ -1,0 +1,101 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fcdca874-ae78-403e-9bae-8d925b05d3a6/d5ux190-62f74a4a-7d3e-48b7-b2d1-31e80ad54921.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ZjZGNhODc0LWFlNzgtNDAzZS05YmFlLThkOTI1YjA1ZDNhNlwvZDV1eDE5MC02MmY3NGE0YS03ZDNlLTQ4YjctYjJkMS0zMWU4MGFkNTQ5MjEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.bFf68DP-iNUsVIwFXDvw7cwezDbQpIqYTHKdPz6bipM'); /* Substitua pelo caminho da sua imagem */
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+.logo{
+    position: absolute;
+    top: 1%;
+    left: 4%;
+  }
+  .logo img {
+    width: 15%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  .logo img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .cabecalho{
+    position: absolute;
+    background-color: rgb(58, 91, 153);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 85px;
+    z-index: -1;
+  }
+
+
+  .text{
+    position: absolute;
+    left: 59%;
+    transform: translateX(-50%);
+    width: 65%;
+    text-align: justify;
+    padding: 1% 1%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.8em;
+    top: 40%;
+  }
+
+  .imagem{
+    display: block;
+    width: 166%;
+    height: auto;
+    left: -44%;
+    position: absolute;
+    top: -5%;
+  }
+  .cards {
+    position: absolute;
+    width: 21%;
+    background-color: rgb(255, 255, 255);
+    padding: 5px 20px;
+    text-align: center;
+    border-style: initial;
+    border-radius: 0.8rem;
+    height: 80%;
+    box-shadow: 1px 2px 4.5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    top: 14%;
+    left: 1%;
+
+  }
+
+  .imagemText{
+    width: 100%;
+    height: auto;
+    font-size: small;
+  }
+  .cardsText {
+    width: 100%;
+    border-radius: 0.8rem;
+    height: 218px;
+    box-shadow: 1px 2px 4.5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    float: left;
+
+  }
+  
+
+  .tableTextL{
+    float: left;
+    width: 308px;
+    height: 102%;
+    text-align: center;
+
+  }
+  .tableTextR{
+    float: right;
+    width: 278px;
+    height: 217px;
+    text-align: center;
+
+  }

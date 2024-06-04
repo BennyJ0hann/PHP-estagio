@@ -1,0 +1,385 @@
+.background{
+  background: rgb(255, 255, 255);
+}
+.logoPagInicio{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vw;
+  padding-top: 5%;
+}
+.logoPagInicio img{
+  height: 21vw;
+}
+
+#botao {
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+#botao:disabled {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
+
+
+
+.logo{
+  position: absolute;
+  top: 0.6vw;
+  left: 6vw;
+}
+.logo img {
+  width: 5.2vw;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.cabecalho{
+  position: absolute;
+  background-color: rgb(58, 91, 153);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 6.5vw;
+  z-index: -1;
+}
+
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 2.5vw;
+}
+
+
+.formatation ul {
+    display: block ruby;
+    padding-top: 5vw;
+
+}
+
+
+.Desconhecido{
+  background-color: #a3a3a3;
+  color: white;
+  padding: 0.3vw 2vw;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 26.5vw;
+  left: 8.4vw;
+  font-size: 1.5vw;
+  border-radius: 0.8rem;
+}
+.life{
+    background-color: #36f45f;
+    color: white;
+    padding: 0.3vw 2vw;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    top: 26.5vw;
+    left: 15.4vw;
+    font-size: 1.5vw;
+    border-radius: 0.8rem;
+    
+}
+.dead{
+  background-color: #df302a;
+  color: white;
+  padding: 0.3vw 2vw;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 26.5vw;
+  left: 14.4vw;
+      font-size: 1.5vw;
+  border-radius: 0.8rem;
+}
+.dead2{
+  background-color: #df302a;
+  color: white;
+  padding: 0.3vw 2vw;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 26.5vw;
+  left: 12.4vw;
+      font-size: 1.5vw;
+  border-radius: 0.8rem;
+}
+.deadJoffrey{
+  background-color: #36f45f;
+  color: white;
+  padding: 0.3vw 2vw;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 26.5vw;
+  left: 12.4vw;
+      font-size: 1.5vw;
+  border-radius: 0.8rem;
+}
+
+
+
+
+.cards {
+  position: relative;
+  width: 19.5vw;
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  padding: 0.01vw 2vw;
+  text-align: center;
+  border-style: initial ;
+  border-radius: 0.8rem;
+  height: 47vw;
+  box-shadow: 1px 2px 4.5px rgba(0, 0, 0, 0.3);
+    
+}
+.container {
+    position: relative;
+    width: 19.5vw; /* Define a largura como 80% da largura da janela do navegador */
+  height: 27vw;
+    overflow: hidden; 
+
+    cursor: pointer; 
+    border: none; 
+    border-radius: 5px;
+    text-align: center; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease;
+  }
+  .fontCard{
+    font-size: 0.85vw;
+  }
+  
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .image_1 {
+    display: block;
+  width: 211%;
+  height: auto;
+  left: -66%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_2 {
+    display: block;
+  width: 100%;
+  height: auto;
+  left: 0%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_3 {
+    display: block;
+  width: 211%;
+  height: auto;
+  left: -66%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_4 {
+    display: block;
+  width: 144%;
+  height: auto;
+  left: -18%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_5 {
+    display: block;
+  width: 101%;
+  height: auto;
+  left: -1%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_6 {
+    display: block;
+  width: 101%;
+  height: auto;
+  left: -1%;
+  position: absolute;
+  top: -17%;
+  }
+  .image_7 {
+    display: block;
+  width: 85%;
+  height: auto;
+  left: 8%;
+  position: absolute;
+  top: 6%;
+  }
+  .image_8 {
+    display: block;
+  width: 131%;
+  height: auto;
+  left: -20%;
+  position: absolute;
+  top: 0%;
+  }
+  
+  .image_9 {
+    display: block;
+  width: 249%;
+  height: auto;
+  left: -61%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_10 {
+    display: block;
+  width: 190%;
+  height: auto;
+  left: -56%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_11 {
+    display: block;
+  width: 113%;
+  height: auto;
+  left: -8%;
+  position: absolute;
+  top: 0%;
+  }
+  .image_12 {
+    display: block;
+    width: 237%;
+    height: auto;
+    left: -117%;
+    position: absolute;
+    top: -24%;
+  }
+  .image_13 {
+    display: block;
+  width: 99%;
+  height: auto;
+  left: -1%;
+  position: absolute;
+  top: 38%;
+  }
+  .image_14{
+    display: block;
+  width: 257%;
+  height: auto;
+  left: -28%;
+  position: absolute;
+  top: -3%;
+  }
+  .image_15{
+    display: block;
+  width: 199%;
+  height: auto;
+  left: -46%;
+  position: absolute;
+  top: -3%;
+  }
+  .image_16{
+    display: block;
+  width: 163%;
+  height: auto;
+  left: -63%;
+  position: absolute;
+  top: 9%;
+  }
+  .image_17{
+    display: block;
+  width: 102%;
+  height: auto;
+  left: -1%;
+  position: absolute;
+  top: 0%;
+  }
+  .overlay {
+    position: absolute;
+    cursor: pointer; /* Adiciona o cursor de clique */
+
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(48, 48, 48, 0.9);
+    overflow: hidden;
+    width: 100%;
+    height: 0%;
+    transition: .5s ease;
+  }
+  .container:hover .overlay {
+    bottom: 0%;
+    height: 100%;
+  }
+  .text {
+    white-space: nowrap; 
+    color: rgb(255, 255, 255);
+    position: absolute;
+    overflow: hidden;
+    top: 11vw;
+    left: 7vw;
+    font-size: 1vw;
+  }
+  
+  .container:hover .text {
+    
+    
+    animation: fontBreath 2.7s infinite;
+  }
+  @keyframes fontBreath {
+    0%{
+      transform: scale(1.4);
+    }
+    50%{
+      transform: scale(1.6);
+    }
+    100%{
+      transform: scale(1.4);
+    }
+  }
+
+
+
+
+
+.pagination {
+    list-style-type: none;
+    margin: 10% 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    display: inline-block;
+    margin-right: 0.5%;
+}
+
+.pagination li a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.pagination li a:hover {
+    background-color: #05386e;
+}
