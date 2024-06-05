@@ -1,77 +1,13 @@
 <?php
+include 'cadastro.html';
+session_start();
+
+if (!isset($_SESSION['cadastro'])) {
+    $_SESSION['cadastro'] = [];
+    $_SESSION['contador'] = 0;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    session_start();
-
-    class Pessoa {
-        private $nomePersonagem;
-        private $primeiraAparicao;
-        private $maiorFeito;
-        private $quemE;
-        private $vivoMorto;
-        private $causaDaMorte;
-
-        public function __construct($nomePersonagem, $primeiraAparicao, $maiorFeito, $quemE, $vivoMorto, $causaDaMorte) {
-            $this->nomePersonagem = $nomePersonagem;
-            $this->primeiraAparicao = $primeiraAparicao;
-            $this->maiorFeito = $maiorFeito;
-            $this->quemE = $quemE;
-            $this->vivoMorto = $vivoMorto;
-            $this->causaDaMorte = $causaDaMorte;
-        }
-
-        public function getNomePersonagem() {
-            return $this->nomePersonagem;
-        }
-
-        public function getPrimeiraAparicao() {
-            return $this->primeiraAparicao;
-        }
-
-        public function getMaiorFeito() {
-            return $this->maiorFeito;
-        }
-
-        public function getQuemE() {
-            return $this->quemE;
-        }
-
-        public function getVivoMorto() {
-            return $this->vivoMorto;
-        }
-
-        public function getCausaDaMorte() {
-            return $this->causaDaMorte;
-        }
-
-        public function setNomePersonagem($nomePersonagem) {
-            $this->nomePersonagem = $nomePersonagem;
-        }
-
-        public function setPrimeiraAparicao($primeiraAparicao) {
-            $this->primeiraAparicao = $primeiraAparicao;
-        }
-
-        public function setMaiorFeito($maiorFeito) {
-            $this->maiorFeito = $maiorFeito;
-        }
-
-        public function setQuemE($quemE) {
-            $this->quemE = $quemE;
-        }
-
-        public function setVivoMorto($vivoMorto) {
-            $this->vivoMorto = $vivoMorto;
-        }
-
-        public function setCausaDaMorte($causaDaMorte) {
-            $this->causaDaMorte = $causaDaMorte;
-        }
-    }
-
-    if (!isset($_SESSION['cadastro'])) {
-        $_SESSION['cadastro'] = [];
-    }
-
     if (isset($_POST['limpa'])) {
         unset($_SESSION['cadastro']);
     }
@@ -104,12 +40,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $postVivo = $_POST['vivoMorto'];
             $postMorte = isset($_POST['causaMorte']) ? $_POST['causaMorte'] : '';
 
-            $personagem = new Pessoa($postNome, $postAparicao, $postFeito, $postQuem, $postVivo, $postMorte);
+            $personagem = [
+                'Registro'=>$_SESSION['contador'],
+                'nomePersonagem' => $postNome,
+                'primeiraAparicao' => $postAparicao,
+                'maiorFeito' => $postFeito,
+                'quemE' => $postQuem,
+                'vivoMorto' => $postVivo,
+                'causaDaMorte' => $postMorte
+            ];
 
             $_SESSION['cadastro'][] = $personagem;
+            $_SESSION['contador']++;
+
 
             echo '<p class="text-success">Personagem adicionado com sucesso.</p>';
+
+            for ($i = 0; $i < count($_SESSION['cadastro']); $i++) {
+                $personagem = $_SESSION['cadastro'][$i];
+                echo '<p> Nome: ' . $personagem['nomePersonagem'] . ' | Primeira Aparição: ' . $personagem['primeiraAparicao'] . ' | Maior Feito: ' . $personagem['maiorFeito'] . ' | Quem é: ' . $personagem['quemE'] . ' - ' . $personagem['vivoMorto'] . '   ' . $personagem['causaDaMorte'] . '</p>';
+            }
+            
         }
+        
     }
 }
-include 'cadastro.html';
+?>
