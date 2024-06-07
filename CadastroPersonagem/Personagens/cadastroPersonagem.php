@@ -7,10 +7,12 @@ if (!isset($_SESSION['cadastro'])) {
     $_SESSION['contador'] = 0;
 }
 
+if (isset($_POST['limpa'])) {
+    unset($_SESSION['cadastro']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['limpa'])) {
-        unset($_SESSION['cadastro']);
-    }
+    
 
     if (isset($_POST['submit'])) {
         $erroNomePersonagem = '';
@@ -39,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $postQuem = $_POST['quemE'];
             $postVivo = $_POST['vivoMorto'];
             $postMorte = isset($_POST['causaMorte']) ? $_POST['causaMorte'] : '';
+            $postImagem = $_POST['linkImagem'];
 
             $personagem = [
                 'Registro'=>$_SESSION['contador'],
@@ -47,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'maiorFeito' => $postFeito,
                 'quemE' => $postQuem,
                 'vivoMorto' => $postVivo,
-                'causaDaMorte' => $postMorte
+                'causaDaMorte' => $postMorte,
+                'imagemPersonagem' => $postImagem
             ];
 
             $_SESSION['cadastro'][] = $personagem;
@@ -58,11 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             for ($i = 0; $i < count($_SESSION['cadastro']); $i++) {
                 $personagem = $_SESSION['cadastro'][$i];
-                echo '<p> Nome: ' . $personagem['nomePersonagem'] . ' | Primeira Aparição: ' . $personagem['primeiraAparicao'] . ' | Maior Feito: ' . $personagem['maiorFeito'] . ' | Quem é: ' . $personagem['quemE'] . ' - ' . $personagem['vivoMorto'] . '   ' . $personagem['causaDaMorte'] . '</p>';
+                echo '<p> Nome: ' . $personagem['nomePersonagem'] . ' | Primeira Aparição: ' . $personagem['primeiraAparicao'] . ' | Maior Feito: ' . $personagem['maiorFeito'] . ' | Quem é: ' . $personagem['quemE'] . ' - ' . $personagem['vivoMorto'] . '   ' . $personagem['causaDaMorte'] .$personagem['imagemPersonagem']. '</p>';
             }
             
         }
         
     }
 }
+header('Location: /CadastroPersonagem/Personagens/PagPersonagens.php');
+exit();
 ?>

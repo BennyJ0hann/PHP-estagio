@@ -151,10 +151,21 @@ h1 {
   box-shadow: 1px 2px 4.5px rgba(0, 0, 0, 0.3);
     
 }
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul > li {
+  flex: 1 1 calc(25% - 40px); /* 4 items per row with 20px margin */
+  margin: 10px;
+}
 .container {
     position: relative;
     width: 19.5vw; /* Define a largura como 80% da largura da janela do navegador */
-  height: 27vw;
+    height: 27vw;
     overflow: hidden; 
 
     cursor: pointer; 

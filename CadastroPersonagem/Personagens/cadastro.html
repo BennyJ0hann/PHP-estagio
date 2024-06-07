@@ -16,51 +16,58 @@
             <div class="col-4">
                 <form action="cadastroPersonagem.php" method="post">
                     <label for="nome">Nome do Personagem:</label>
-                    <input type="text" id="nome" name="nomePersonagem" class="form-control" required><br>
+                    <input type="text" id="nome" name="nomePersonagem" class="form-control"><br>
 
                     <label for="primeiraAparicao">Primeira Aparição:</label>
-                    <input type="text" id="primeiraAparicao" name="primeiraAparicao" class="form-control" required><br>
+                    <input type="text" id="primeiraAparicao" name="primeiraAparicao" class="form-control"><br>
 
                     <label for="maiorFeito">Maior Feito:</label>
-                    <input type="text" id="maiorFeito" name="maiorFeito" class="form-control" required><br>
+                    <input type="text" id="maiorFeito" name="maiorFeito" class="form-control"><br>
 
                     <label for="quemE">Quem é:</label>
-                    <input type="text" id="quemE" name="quemE" class="form-control" required><br>
+                    <input type="text" id="quemE" name="quemE" class="form-control"><br>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="vivoMorto" id="vivo" value="vivo" >
-                        <label class="form-check-label" for="vivo">Vivo</label>
+                        <input class="form-check-input" type="radio" name="vivoMorto" id="Vivo" value="Vivo">
+                        <label class="form-check-label" for="Vivo">Vivo</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="vivoMorto" id="morto" value="morto">
-                        <label class="form-check-label" for="morto">Morto</label>
+                        <input class="form-check-input" type="radio" name="vivoMorto" id="Morto" value="Morto">
+                        <label class="form-check-label" for="Morto">Morto</label>
                     </div><br>
 
                     <label for="causaMorte">Causa da Morte (se estiver morto):</label>
                     <input type="text" id="causaMorte" name="causaMorte" class="form-control" disabled><br>
 
-                    <button type="submit" value="Confirmar" name="submit" class="btn btn-primary">Cadastrar</button>
+                    <label for="linkImagem">Imagem do personagem (link web):</label>
+                    <input type="text" id="linkImagem" name="linkImagem" class="form-control"><br>
+
                     <div class="col">
-                            <button type="limpa" value="Confirmar" name="limpa" class="btn btn-danger">Limpar Cadastros</button>
-                        </div>
+                        <button type="submit" value="Confirmar" name="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                    <div class="col">
+                        <button type="limpa" value="Limpar" name="limpa" class="btn btn-danger">Limpar
+                            Cadastros</button>
+                    </div>
+
                 </form>
             </div>
             <div class="col-4"></div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        var morto = document.getElementById('morto');
-        var causaMorte = document.getElementById('causaMorte');
+        document.addEventListener('DOMContentLoaded', function () {
+            var morto = document.getElementById('morto');
+            var causaMorte = document.getElementById('causaMorte');
 
-        morto.addEventListener('change', function(){
-            if(morto.checked){
-                causaMorte.disabled = false;
-            }else{
-                causaMorte.disabled = true;
-            }
+            morto.addEventListener('change', function () {
+                if (morto.checked) {
+                    causaMorte.disabled = false;
+                } else {
+                    causaMorte.disabled = true;
+                }
+            });
         });
-    } );
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
