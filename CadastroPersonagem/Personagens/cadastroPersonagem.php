@@ -9,6 +9,10 @@ if (!isset($_SESSION['cadastro'])) {
 
 if (isset($_POST['limpa'])) {
     unset($_SESSION['cadastro']);
+    
+}
+if (isset($_POST['verCadastro'])) {
+    
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
