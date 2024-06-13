@@ -19,6 +19,8 @@
     }
     if (isset($_POST['limpa'])) {
         $_SESSION['pessoas'] = [];
+        $_SESSION['contador']= 0;
+
         echo '<p class ="text-danger">Todos os registros foram apagados</p>';
     }
     if (isset($_POST['verCadastro'])) {
@@ -71,171 +73,170 @@
     }
     if (isset($_POST['populaPag'])) {
         echo '<p class ="text-success">Registros adicionados com sucesso!</p>';
-        $_SESSION['contador']= 24;
         $arrayPreset = [
             [
-                'Registro' => '0',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Mickey Mouse',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '92',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '1',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Minnie Mouse',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '92',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '2',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Pato Donald',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '88',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '3',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Margarida',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '86',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '4',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Pateta',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '88',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '5',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Pluto',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '90',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '6',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Simba',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '19',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '7',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Nala',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '19',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '8',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Ariel',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '16',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '9',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Bela',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '22',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '10',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Fera',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '30',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '11',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Aladdin',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '20',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '12',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Jasmine',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '17',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '13',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Woody',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '25',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '14',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Buzz Lightyear',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '25',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '15',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Elsa',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '24',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '16',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Anna',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '23',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '17',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Olaf',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '15',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '18',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Shrek',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '33',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '19',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Fiona',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '24',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '20',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Burro',
                 'cidadePessoa' => 'Santos',
                 'idadePessoa' => '13',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '21',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Gato de Botas',
                 'cidadePessoa' => 'Belo Horizonte',
                 'idadePessoa' => '11',
                 'sexo' => 'Masculino'
             ],
             [
-                'Registro' => '22',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Moana',
                 'cidadePessoa' => 'Contagem',
                 'idadePessoa' => '22',
                 'sexo' => 'Feminino'
             ],
             [
-                'Registro' => '23',
+                'Registro' => $_SESSION['contador']++,
                 'nomePessoa' => 'Maui',
                 'cidadePessoa' => 'Nova Lima',
                 'idadePessoa' => '574',
