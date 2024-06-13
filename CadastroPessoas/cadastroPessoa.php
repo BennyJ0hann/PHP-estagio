@@ -71,6 +71,7 @@
     }
     if (isset($_POST['populaPag'])) {
         echo '<p class ="text-success">Registros adicionados com sucesso!</p>';
+        $_SESSION['contador']= 24;
         $arrayPreset = [
             [
                 'Registro' => '0',
