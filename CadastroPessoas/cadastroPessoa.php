@@ -20,6 +20,7 @@
     if (isset($_POST['limpa'])) {
         $_SESSION['pessoas'] = [];
         $_SESSION['contador']= 0;
+   phpinfo();
 
         echo '<p class ="text-danger">Todos os registros foram apagados</p>';
     }
