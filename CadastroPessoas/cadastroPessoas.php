@@ -14,7 +14,7 @@
         <div class="form-group row">
             <div class="col-4"></div>
             <div class="col-4">
-                <form action="cadastroPessoa.php" method="post">
+                <form action="criar.php" method="post">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nomePessoa" class="form-control"><br>
 
@@ -48,6 +48,9 @@
                     
                     <div class="col mb-2">
                         <button type="submit" value="limp" id="verCadastro" name="verCadastro" class="btn btn-secondary">Ver Cadastros</button>
+                    </div>
+                    <div class="col mb-2">
+                        <button type="submit" value="verifica" name="verificaConexao" class="btn btn-secondary">Verificar Conexão</button>
                     </div>
 
                 </form>

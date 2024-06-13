@@ -10,7 +10,12 @@
 
 <body class="bg-dark text-white">
     <?php
+
+    include 'db.php';
     session_start();
+
+    
+
     $valida = true;
 
     if (!isset($_SESSION['pessoas'])) {
@@ -20,7 +25,6 @@
     if (isset($_POST['limpa'])) {
         $_SESSION['pessoas'] = [];
         $_SESSION['contador']= 0;
-   phpinfo();
 
         echo '<p class ="text-danger">Todos os registros foram apagados</p>';
     }
@@ -32,6 +36,7 @@
         header('Location: /CadastroPessoas/cadastroPessoas.html');
         exit();
     }
+    
     if (isset($_POST['nomesEidades'])) {
         echo '<h2> Nome e Idade </h2>';
 
@@ -276,6 +281,8 @@
                 'idadePessoa' => $idadePessoa,
                 'sexo' => $sexo
             ];
+
+            
 
             $_SESSION['pessoas'][] = $pessoa;
             $_SESSION['contador']++;
