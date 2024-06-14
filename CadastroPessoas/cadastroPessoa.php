@@ -11,7 +11,6 @@
 <body class="bg-dark text-white">
     <?php
 
-    include 'db.php';
     session_start();
 
     
