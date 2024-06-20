@@ -73,7 +73,9 @@
             $sexo = $_POST['sexo'];
             $nomePessoa = $_POST['nomePessoa'];
             $cidadePessoa = $_POST['cidadePessoa'];
-            $dataNascPessoa = $_POST['dataNascPessoa'];
+            $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $_POST['dtNascimento']);
+
+            $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
 
             if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
@@ -84,13 +86,13 @@
                     if(empty($cidadePessoa)){
                         $cidadePessoa = $row["cidade"];
                     }
-                    if(empty($dataNascPessoa)){
-                        $dataNascPessoa = $row["data_nascimento"];
+                    if(empty($dtNascimento)){
+                        $dtNascimento = $row["data_nascimento"];
                     }if(empty($sexo)){
                         $sexo = $row["sexo"];
                     }
 
-            $sql2 = "UPDATE pessoas SET name='$nomePessoa', cidade='$cidadePessoa', data_nascimento='$dataNascPessoa', sexo='$sexo' WHERE id=$id";
+            $sql2 = "UPDATE pessoas SET name='$nomePessoa', cidade='$cidadePessoa', data_nascimento='$dtNascimento', sexo='$sexo' WHERE id=$id";
             if ($conexao->query($sql2) === TRUE) {
                 echo "Atualização de cadastro feita com sucesso";
             } else {
@@ -120,8 +122,8 @@
             <input type="text" id="primeiraAparicao" name="cidadePessoa" class="form-control" placeholder="Deixe em branco para não alterar"><br>
         </div>
         <div class="col-5 text-left">
-            <label for="dataNascPessoa">Data de nascimento:</label>
-            <input type="text" id="dataNascPessoa" name="dataNascPessoa" class="form-control" placeholder="Deixe em branco para não alterar"><br>
+            <label for="dtNascimento">Data de nascimento:</label>
+            <input type="text" id="dtNascimento" name="dtNascimento" class="form-control" placeholder="Deixe em branco para não alterar"><br>
             </div>
         <div class="col-5 text-left">
             <label for="quemE">Sexo:</label>
@@ -154,4 +156,17 @@
     </div>
     </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function () {
+            $('#dtNascimento').mask('00/00/0000');
+        });
+    </script>
 </body>

@@ -100,9 +100,9 @@
       $resultado = $conexao->query($sql);
 
       if ($resultado->num_rows > 0) {
-        echo '<div class="container">
+        echo '<div class="container ">
   <div class="row ">
-    <div class="col border border-secondary text-center">
+    <div class="col border border-secondary text-center ">
       id
     </div>
     <div class="col border border-secondary text-center">

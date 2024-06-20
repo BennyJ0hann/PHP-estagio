@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
 include 'read.php';
+include 'update.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
