@@ -4,24 +4,31 @@ include 'read.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
+    $data_br = $_POST['data_br'];
+
+
     if (isset($_POST['submit'])) {
         $nomePessoa = $_POST['nomePessoa'];
         $cidadePessoa = $_POST['cidadePessoa'];
-        $idadePessoa = $_POST['idadePessoa'];
         $sexo = $_POST['sexo'];
+        $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $_POST['dtNascimento']);
+
+        $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
+    
+
         if (empty($nomePessoa)) {
-            $erroModelo = '<p class="text-danger">Informe o nome da pessoa.</p>';
+            echo '<p class="text-danger">Informe o nome da pessoa.</p>';
         } else if (empty($cidadePessoa)) {
-            $erroFabricante = '<p class="text-danger">Informe corretamente a cidade.</p>';
-        } else if (empty($idadePessoa)) {
-            $erroCor = '<p class="text-danger">Informe corretamente a idade.</p>';
+            echo '<p class="text-danger">Informe corretamente a cidade.</p>';
+        } else if (empty($dtNascimento)) {
+            echo '<p class="text-danger">Informe corretamente a idade.</p>';
         } else if (empty($sexo)) {
-            $erroPortas = '<p class="text-danger">Marque a opção que melhor te representa.</p>';
+            echo '<p class="text-danger">Marque a opção que melhor te representa.</p>';
         } else {
 
     
 
-    $sql = "INSERT INTO pessoas (name, cidade, idade, sexo) VALUES ('$nomePessoa', '$cidadePessoa', '$idadePessoa', '$sexo')";
+    $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
     if ($conexao->query($sql) === TRUE) {
         echo "Novo cadastro adicionado ao Banco";
     } else {

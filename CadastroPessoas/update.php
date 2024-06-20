@@ -11,8 +11,11 @@
 <body class="bg-dark text-white">
     <?php
     include 'db.php';
-
-    $sql = "select id, name, cidade, idade, sexo from pessoas";
+    if (isset($_POST['voltar'])) {
+        header('Location: /CadastroPessoas/read.php');
+        exit();
+    }
+    $sql = "select id, name, cidade, data_nascimento, sexo from pessoas";
     $resultado = $conexao->query($sql);
 
     if ($resultado->num_rows > 0) {
@@ -28,7 +31,7 @@
   Cidade
 </div>
 <div class="col border border-secondary text-center">
-  Idade
+  Data de Nascimento
 </div>
 <div class="col border border-secondary text-center">
   Sexo
@@ -48,7 +51,7 @@
   ' . $row["cidade"] . '
 </div>
 <div class="col border border-secondary">
-  ' . $row["idade"] . '
+  ' . $row["data_nascimento"] . '
 </div>
 <div class="col border border-secondary">
   ' . $row["sexo"] . '
@@ -59,21 +62,18 @@
     } else {
         echo "Sem nenhum cadastro";
     }
-    if (isset($_POST['voltar'])) {
-        header('Location: /CadastroPessoas/read.php');
-        exit();
-    }
+    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["atualizar"])) {
-            $sql1 = "select id, name, cidade, idade, sexo from pessoas";
+            $sql1 = "select id, name, cidade, data_nascimento, sexo from pessoas";
             $resultado = $conexao->query($sql1);
             
             $id = $_POST['Registro'];
             $sexo = $_POST['sexo'];
             $nomePessoa = $_POST['nomePessoa'];
             $cidadePessoa = $_POST['cidadePessoa'];
-            $idadePessoa = $_POST['idadePessoa'];
+            $dataNascPessoa = $_POST['dataNascPessoa'];
 
             if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
@@ -84,13 +84,13 @@
                     if(empty($cidadePessoa)){
                         $cidadePessoa = $row["cidade"];
                     }
-                    if(empty($idadePessoa)){
-                        $idadePessoa = $row["idade"];
+                    if(empty($dataNascPessoa)){
+                        $dataNascPessoa = $row["data_nascimento"];
                     }if(empty($sexo)){
                         $sexo = $row["sexo"];
                     }
 
-            $sql2 = "UPDATE pessoas SET name='$nomePessoa', cidade='$cidadePessoa', idade='$idadePessoa', sexo='$sexo' WHERE id=$id";
+            $sql2 = "UPDATE pessoas SET name='$nomePessoa', cidade='$cidadePessoa', data_nascimento='$dataNascPessoa', sexo='$sexo' WHERE id=$id";
             if ($conexao->query($sql2) === TRUE) {
                 echo "Atualização de cadastro feita com sucesso";
             } else {
@@ -120,8 +120,8 @@
             <input type="text" id="primeiraAparicao" name="cidadePessoa" class="form-control" placeholder="Deixe em branco para não alterar"><br>
         </div>
         <div class="col-5 text-left">
-            <label for="maiorFeito">Idade:</label>
-            <input type="text" id="maiorFeito" name="idadePessoa" class="form-control" placeholder="Deixe em branco para não alterar"><br>
+            <label for="dataNascPessoa">Data de nascimento:</label>
+            <input type="text" id="dataNascPessoa" name="dataNascPessoa" class="form-control" placeholder="Deixe em branco para não alterar"><br>
             </div>
         <div class="col-5 text-left">
             <label for="quemE">Sexo:</label>

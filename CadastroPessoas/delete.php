@@ -11,8 +11,11 @@
 <body class="bg-dark text-white">
 <?php
 include 'db.php';
-
-$sql = "select id, name, cidade, idade, sexo from pessoas";
+if (isset($_POST['voltar'])) {
+  header('Location: /CadastroPessoas/read.php');
+  exit();
+}
+$sql = "select id, name, cidade, data_nascimento, sexo from pessoas";
 $resultado = $conexao->query($sql);
 
     if ($resultado->num_rows > 0) {
@@ -28,7 +31,7 @@ $resultado = $conexao->query($sql);
   Cidade
 </div>
 <div class="col border border-secondary text-center">
-  Idade
+  Data de Nascimento
 </div>
 <div class="col border border-secondary text-center">
   Sexo
@@ -48,7 +51,7 @@ $resultado = $conexao->query($sql);
   ' . $row["cidade"] . '
 </div>
 <div class="col border border-secondary">
-  ' . $row["idade"] . '
+  ' . $row["data_nascimento"] . '
 </div>
 <div class="col border border-secondary">
   ' . $row["sexo"] . '
@@ -82,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
         <form role="form" method="post" class="mt-5" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="row text-left">
-                <div class="col-5">
+            <div class="col-5">
                 <label for="idDeDelete">Digite o ID da pessoa q irá ser excluida:</label>
                 <input type="text" id="primeiraAparicao" name="Registro" class="form-control"><br>
                 </div>
