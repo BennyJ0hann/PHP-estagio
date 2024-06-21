@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Cadastro</title>
 </head>
 
 <body class="bg-dark text-white">
@@ -45,10 +47,10 @@
   ' . $row["id"] . '
 </div>
 <div class="col border border-secondary">
-  ' . $row["name"] . '
+  ' . formatacao($row["name"]) . '
 </div>
 <div class="col border border-secondary">
-  ' . $row["cidade"] . '
+  ' . formatacao($row["cidade"]) . '
 </div>
 <div class="col border border-secondary">
   ' . $row["data_nascimento"] . '
@@ -70,12 +72,18 @@
             $resultado = $conexao->query($sql1);
             
             $id = $_POST['Registro'];
-            $sexo = $_POST['sexo'];
-            $nomePessoa = $_POST['nomePessoa'];
-            $cidadePessoa = $_POST['cidadePessoa'];
-            $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $_POST['dtNascimento']);
+            $sexo = $_POST['sexoForm'];
+            $nomePessoa = formatacao($_POST['nomePessoa']);
+            $cidadePessoa = formatacao($_POST['cidadePessoa']);
+            $dtNascimentoSemFormatar = $_POST['dtNascimento'];
+            $dtNascimento="";
 
-            $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
+            if(empty($dtNascimentoSemFormatar)){
+            }else{
+                $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $dtNascimentoSemFormatar);
+                $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
+            }
+            
 
             if ($resultado->num_rows > 0) {
             while ($row = $resultado->fetch_assoc()) {
@@ -86,14 +94,14 @@
                     if(empty($cidadePessoa)){
                         $cidadePessoa = $row["cidade"];
                     }
-                    if(empty($dtNascimento)){
+                    if(empty($dtNascimento)) {
                         $dtNascimento = $row["data_nascimento"];
                     }if(empty($sexo)){
                         $sexo = $row["sexo"];
                     }
 
             $sql2 = "UPDATE pessoas SET name='$nomePessoa', cidade='$cidadePessoa', data_nascimento='$dtNascimento', sexo='$sexo' WHERE id=$id";
-            if ($conexao->query($sql2) === TRUE) {
+            if ($conexao->query($sql2) == TRUE) {
                 echo "Atualização de cadastro feita com sucesso";
             } else {
                 echo "Erro ao atualizar o cadastro: " . $conexao->error;
@@ -128,16 +136,12 @@
         <div class="col-5 text-left">
             <label for="quemE">Sexo:</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="sexo" id="Masculino" value="Masculino">
+                <input class="form-check-input" type="radio" name="sexoForm" id="Masculino" value="Masculino">
                 <label class="form-check-label" for="Masculino">Masculino</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="sexo" id="Feminino" value="Feminino">
+                <input class="form-check-input" type="radio" name="sexoForm" id="Feminino" value="Feminino">
                 <label class="form-check-label" for="Feminino">Feminino</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="sexo" id="nãoAlterado" value="Feminino">
-                <label class="form-check-label" for="Feminino">Não alterar</label>
             </div><br>
             </div>
             </div>

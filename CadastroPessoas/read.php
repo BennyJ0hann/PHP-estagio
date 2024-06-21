@@ -14,13 +14,6 @@
   <?php
   include 'db.php';
 
-  $sqlCidade = "SELECT DISTINCT (p.cidade)  FROM cadastroPessoas.pessoas p;";
-  $cidades = $conexao->query($sqlCidade);
-
-  $sqlIdade = "SELECT DISTINCT (YEAR(CURRENT_DATE()) - YEAR(p.data_nascimento) - (RIGHT(CURRENT_DATE(), 5) < RIGHT(p.data_nascimento, 5))) AS idade
-                FROM cadastroPessoas.pessoas p ORDER BY idade ASC;";
-  $idades = $conexao->query($sqlIdade);
-
 
   if (isset($_POST['cadastrar'])) {
     header('Location: /CadastroPessoas/cadastroPessoas.php');
@@ -34,67 +27,9 @@
     header('Location: /CadastroPessoas/update.php');
     exit();
   }
-
-  if (isset($_POST['pesquisar'])) {
-    $cidadeForm = $_POST['selectCidade'];
-    $idadeForm = (int) $_POST['selectIdade'];
-    $sexoForm = $_POST['selectSexo'];
-
-    $condicao = "YEAR(CURRENT_DATE()) - YEAR(p.data_nascimento) - (RIGHT(CURRENT_DATE(), 5) < RIGHT(p.data_nascimento, 5))";
-
-    $condCidade = $cidadeForm ? " and upper(p.cidade) = upper('$cidadeForm')" : "";
-    $condIdade = $idadeForm ? "and $condicao = $idadeForm" : "";
-    $condSexo = $sexoForm ? "and upper(p.sexo) = upper('$sexoForm')" : "";
-
-
-    $pesquisa = " SELECT p.name, p.cidade, $condicao AS idade, p.sexo
-                  FROM cadastroPessoas.pessoas p
-                  where 1=1 $condCidade $condIdade $condSexo;";
-
-    $resultado = $conexao->query($pesquisa);
-
-    if ($resultado->num_rows > 0) {
-      echo '<div class="container">
-          <div class="row">
-          <div class="col border border-secondary text-center">
-          Nome
-          </div>
-          <div class="col border border-secondary text-center">
-          Cidade
-          </div>
-          <div class="col border border-secondary text-center">
-          Idade
-          </div>
-          <div class="col border border-secondary text-center">
-          Sexo
-          </div>
-          </div>
-          </div>';
-      while ($row = $resultado->fetch_assoc()) {
-        echo '<div class="container rounded">
-          <div class="row ">
-          <div class="col border border-secondary">
-          ' . $row["name"] . '
-          </div>
-          <div class="col border border-secondary">
-          ' . $row["cidade"] . '
-          </div>
-          <div class="col border border-secondary">
-          ' . $row["idade"] . '
-          </div>
-          <div class="col border border-secondary">
-          ' . $row["sexo"] . '
-          </div>
-          </div>
-          </div>';
-      }
-    } else {
-      echo 'Pesquisa não encontrada';
-    }
-  }
-
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST["verCadastro"]) || isset($_POST["verTudo"]) || isset($_POST["deletar"])) {
+  
+  if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if (isset($_POST['verCadastro']) || isset($_POST["verTudo"]) || isset($_POST["deletar"])) {
 
       $sql = "select id, name, cidade, data_nascimento, sexo from pessoas";
       $resultado = $conexao->query($sql);
@@ -126,10 +61,10 @@
       ' . $row["id"] . '
     </div>
     <div class="col border border-secondary">
-      ' . $row["name"] . '
+      ' . formatacao($row["name"]) . '
     </div>
     <div class="col border border-secondary">
-      ' . $row["cidade"] . '
+      ' . formatacao($row["cidade"]) . '
     </div>
     <div class="col border border-secondary">
       ' . $row["data_nascimento"] . '
@@ -144,10 +79,80 @@
         echo "Sem nenhum cadastro";
       }
 
-      $conexao->close();
+    }
+    if (isset($_POST['pesquisar'])) {
+      $cidadeForm = $_POST['selectCidade'];
+      $idadeForm = (int) $_POST['selectIdade'];
+      $sexoForm = $_POST['selectSexo'];
+  
+      $condicao = "YEAR(CURRENT_DATE()) - YEAR(p.data_nascimento) - (RIGHT(CURRENT_DATE(), 5) < RIGHT(p.data_nascimento, 5))";
+  
+      $condCidade = $cidadeForm ? " and upper(p.cidade) = upper('$cidadeForm')" : "";
+      $condIdade = $idadeForm ? "and $condicao = $idadeForm" : "";
+      $condSexo = $sexoForm ? "and upper(p.sexo) = upper('$sexoForm')" : "";
+  
+  
+      $pesquisa = " SELECT p.name, p.cidade, $condicao AS idade, p.sexo
+                    FROM cadastroPessoas.pessoas p
+                    where 1=1 $condCidade $condIdade $condSexo;";
+  
+      $resultado = $conexao->query($pesquisa);
+  
+      if ($resultado->num_rows > 0) {
+        echo '<div class="container">
+            <div class="row">
+            <div class="col border border-secondary text-center">
+            Nome
+            </div>
+            <div class="col border border-secondary text-center">
+            Cidade
+            </div>
+            <div class="col border border-secondary text-center">
+            Idade
+            </div>
+            <div class="col border border-secondary text-center">
+            Sexo
+            </div>
+            </div>
+            </div>';
+        while ($row = $resultado->fetch_assoc()) {
+          echo '<div class="container rounded">
+            <div class="row ">
+            <div class="col border border-secondary">
+            ' . formatacao($row["name"]) . '
+            </div>
+            <div class="col border border-secondary">
+            ' . formatacao($row["cidade"]) . '
+            </div>
+            <div class="col border border-secondary">
+            ' . $row["idade"] . '
+            </div>
+            <div class="col border border-secondary">
+            ' . $row["sexo"] . '
+            </div>
+            </div>
+            </div>';
+        }
+      } else {
+        echo 'Pesquisa não encontrada';
+      }
     }
   }
 
+  
+
+  $sqlCidade = "SELECT DISTINCT (p.cidade)  FROM cadastroPessoas.pessoas p;";
+  $cidades = $conexao->query($sqlCidade);
+
+  $sqlIdade = "SELECT DISTINCT (YEAR(CURRENT_DATE()) - YEAR(p.data_nascimento) - (RIGHT(CURRENT_DATE(), 5) < RIGHT(p.data_nascimento, 5))) AS idade
+                FROM cadastroPessoas.pessoas p ORDER BY idade ASC;";
+  $idades = $conexao->query($sqlIdade);
+
+
+
+  
+
+  
 
   ?>
   <div class="container">
@@ -182,7 +187,7 @@
               ?>
 
           </select>
-            <label for="primeiraAparicao">Sexo:</label>
+            <label>Sexo:</label>
             <select class="form-select mb-3" name="selectSexo">
               <option value="masculino">Masculino</option>
               <option value="feminino">Feminino</option>

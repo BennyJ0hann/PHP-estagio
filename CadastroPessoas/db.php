@@ -13,5 +13,8 @@
         }
         echo '<p class = "text-success">Conectado ao Banco de Dados</p>';
     }
+    function formatacao($string, $search = array("De ", "Do ", "Dos ", "Da ", "Das "), $replace = array("de ", "do ", "dos ", "da ", "das ")) {
+        return str_replace($search, $replace, ucwords(strtolower($string)));
+    }
 
 ?>

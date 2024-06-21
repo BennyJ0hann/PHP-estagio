@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Cadastro</title>
 </head>
 
 <body class="bg-dark text-white">
@@ -26,20 +28,21 @@
 
                     <label for="quemE">Sexo:</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sexo" id="Masculino" value="Masculino">
+                        <input class="form-check-input" type="radio" name="sexo" id="Masculino" value="Masculino" >
                         <label class="form-check-label" for="Masculino">Masculino</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sexo" id="Feminino" value="Feminino">
+                        <input class="form-check-input" type="radio" name="sexo" id="Feminino" value="Feminino" >
                         <label class="form-check-label" for="Feminino">Feminino</label>
                     </div><br>
 
 
                     <div class="col mb-2">
-                        <button type="submit" value="Confirmar" name="submit" class="btn btn-primary">Cadastrar</button>
+                        <button type="submit" value="Confirmar" name="submit1" class="btn btn-primary">Cadastrar</button>
                     </div>                    
                     <div class="col mb-2">
-                        <button type="submit" value="limp" id="verCadastro" name="verCadastro" class="btn btn-success">Ver Cadastros</button>
+                        <button type="submit" value="ver" id="verCadastro" name="verTudo" class="btn btn-success">Ver Cadastros</button>
+
                     </div>
                     <div class="col mb-2">
                         <button type="submit" value="verifica" name="verificaConexao" class="btn btn-secondary">Verificar Conexão</button>

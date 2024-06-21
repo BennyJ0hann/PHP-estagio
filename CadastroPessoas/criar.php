@@ -1,19 +1,18 @@
+
 <?php
-include 'db.php';
 include 'read.php';
-include 'update.php';
-
+  if (isset($_POST['voltar'])) {
+    header('Location: /CadastroPessoas/cadastroPessoas.php');
+    exit();
+  }
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-
-    $data_br = $_POST['data_br'];
-
-
-    if (isset($_POST['submit'])) {
-        $nomePessoa = $_POST['nomePessoa'];
-        $cidadePessoa = $_POST['cidadePessoa'];
+    if (isset($_POST['submit1'])) {
+        $nomePessoa = formatacao($_POST['nomePessoa']);
+        $cidadePessoa = formatacao($_POST['cidadePessoa']);
         $sexo = $_POST['sexo'];
         $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $_POST['dtNascimento']);
 
+        
         $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
     
 
@@ -32,11 +31,15 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
     if ($conexao->query($sql) === TRUE) {
         echo "Novo cadastro adicionado ao Banco";
+          
     } else {
-        echo "Erro: " . $sql . "<br>" . $conexao->error;
+        echo "Erro no cadastro ";
     }
     $conexao->close();
 }
     }
+        
+    
+
 }
 ?>
