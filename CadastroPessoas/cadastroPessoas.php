@@ -45,7 +45,7 @@
 
                     </div>
                     <div class="col mb-2">
-                        <button type="submit" value="verifica" name="verificaConexao" class="btn btn-secondary">Verificar Conexão</button>
+                        <button type="verifica" value="verifica" name="verificaConexao" class="btn btn-secondary">Verificar Conexão</button>
                     </div>
 
                 </form>

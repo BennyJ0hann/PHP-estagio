@@ -25,17 +25,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         } else if (empty($sexo)) {
             echo '<p class="text-danger">Marque a opção que melhor te representa.</p>';
         } else {
-
-    
-
-    $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
-    if ($conexao->query($sql) === TRUE) {
-        echo "Novo cadastro adicionado ao Banco";
-          
-    } else {
-        echo "Erro no cadastro ";
-    }
-    $conexao->close();
+            $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
+            if ($conexao->query($sql) === TRUE) {
+                echo "Novo cadastro adicionado ao Banco";
+                
+            } else {
+                echo "Erro no cadastro ";
+            }
+            $conexao->close();
 }
     }
         
