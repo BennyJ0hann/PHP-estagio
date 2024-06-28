@@ -11,9 +11,11 @@
 </head>
 
 <body class="bg-dark text-white">
-
+<?php
+  include 'criar.php';
+?>
     <div class="container">
-        <form role="form" method="post" class="mt-5" action="criar.php">
+        <form role="form" method="post" class="mt-5">
             <div class="row">
                 <div class="col">
                     <div class="col-5 text-left">

@@ -14,10 +14,9 @@
   <?php
   include 'Funcoes.php';
   include 'criar.php';
-
   ?>
   <div class="container">
-    <form role="form" method="post" class="mt-5 row" action="criar.php">
+    <form role="form" method="post" class="mt-5 row" >
       <div class="col-4 text-center mb-2">
         <div class="text-start">
           <label for="primeiraAparicao" class="text-wrap">Cidade:</label>
@@ -48,7 +47,7 @@
               Registros</button>
           </div>
           <div class="col-6 text-end">
-            <button type="submit" value="cadastrar" id="cadastrar" name="pesquisar"
+            <button type="pesquisa" value="cadastrar" id="cadastrar" name="pesquisar"
               class="btn btn-secondary">Pesquisar</button>
           </div>
         </div>

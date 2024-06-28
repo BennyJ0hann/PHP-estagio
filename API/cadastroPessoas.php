@@ -11,12 +11,15 @@
 </head>
 
 <body class="bg-dark text-white">
+<?php
+  include 'criar.php';
+  ?>
     <div class="container">
         <h2>Cadastro de Personagem</h2>
         <div class="form-group row">
             <div class="col-4"></div>
             <div class="col-4">
-                <form action="criar.php" method="post">
+                <form method="post">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nomePessoa" class="form-control"><br>
 

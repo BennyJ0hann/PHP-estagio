@@ -12,6 +12,7 @@
 
 <body class="bg-dark text-white">
   <?php
+  include 'criar.php';
   ?>
   <div class="container">
     <h2>Cadastro de Personagem por API</h2>

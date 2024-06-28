@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
 if (isset($_POST['voltar'])) {
     header('Location: /API/read.php');
     exit();
@@ -25,11 +25,7 @@ if (isset($_POST['cadastroNormal'])) {
     header('Location: /API/cadastroPessoas.php');
     exit();
   }
-if (isset($_POST['verTudo'])) {
-    header('Location: /API/read.php');
-    exit();
-}
-
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['submit1'])) {
         $nomePessoa = formatacao($_POST['nomePessoa']);
         $cidadePessoa = formatacao($_POST['cidadePessoa']);
