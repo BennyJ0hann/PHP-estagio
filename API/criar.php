@@ -1,5 +1,6 @@
 <?php
 
+include 'db.php';
 
 if (isset($_POST['voltar'])) {
     header('Location: /API/read.php');
@@ -11,7 +12,7 @@ if (isset($_POST['cadastroApi'])) {
 }
 if (isset($_POST['atualizarCadastro'])) {
     header('Location: /API/update.php');
-    exit();
+    consulta();
   }
 if (isset($_POST['cadastrar'])) {
     header('Location: /API/cadastroPessoas.php');
@@ -25,28 +26,54 @@ if (isset($_POST['cadastroNormal'])) {
     header('Location: /API/cadastroPessoas.php');
     exit();
   }
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if (isset($_POST['verTudo'])) {
+    header('Location: /API/read.php');
+    exit();
+  }
     if (isset($_POST['submit1'])) {
+        include 'Funcoes.php';
+
+        include 'db.php';
+        if (empty($nomePessoa)) {
+            echo '<p class="text-danger">Informe o nome da pessoa.</p>';
+        } else if (empty($cidadePessoa)) {
+            echo '<p class="text-danger">Informe corretamente de onde é originário.</p>';
+        } else if (empty($dtNascimento)) {
+            echo '<p class="text-danger">Informe corretamente a data de nascimento.</p>';
+        } else if (empty($sexo)) {
+            echo '<p class="text-danger">Marque a opção que melhor te representa.</p>';
+        } else {
+            $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
+            if ($conexao->query($sql) === TRUE) {
+                echo "Novo cadastro adicionado ao Banco <br>";
+                echo "Nome: $nomePessoa, Sexo: $sexo, Cidade: $cidadePessoa, Nascimento: $dtNascimento<br>";
+    
+            } else {
+                echo "Erro no cadastro ";
+            }
+            
+        }
+
         $nomePessoa = formatacao($_POST['nomePessoa']);
         $cidadePessoa = formatacao($_POST['cidadePessoa']);
         $sexo = $_POST['sexo'];
         $dtNascimentoSemFormatar = DateTime::createFromFormat('d/m/Y', $_POST['dtNascimento']);
-
 
         $dtNascimento = $dtNascimentoSemFormatar->format('Y-m-d');
 
         insertMysql($nomePessoa, $cidadePessoa, $sexo, $dtNascimento);
     }
 
-
     if (isset($_POST["delete"])) {
+        include 'Funcoes.php';
+
         $id = $_POST['Registro'];
         deleteMysql($id);
     }
 
-
     if (isset($_POST["atualizar"])) {
-        consulta();
+        include 'Funcoes.php';
+
         $id = $_POST['Registro'];
         $sexo = $_POST['sexoForm'];
         $nomePessoa = formatacao($_POST['nomePessoa']);
@@ -57,7 +84,7 @@ if (isset($_POST['cadastroNormal'])) {
     }
 
 
-    if (isset($_POST['verCadastro']) || isset($_POST["verTudo"]) || isset($_POST["deletar"])) {
+    if (isset($_POST['verCadastro']) || isset($_POST["todosResgistros"]) || isset($_POST["deletar"])) {
 
         consulta();
   
@@ -73,7 +100,8 @@ if (isset($_POST['cadastroNormal'])) {
     }
 
 
-    if (isset($_POST['cadastrar'])) {
+    if (isset($_POST['cadastrarPersonagem'])) {
+        include 'Funcoes.php';
 
         $personagensSelecionados = $_POST['personagemAdd'];
   
@@ -93,6 +121,7 @@ if (isset($_POST['cadastroNormal'])) {
     
       
       if (isset($_POST['pesquisarPersonagem'])) {
+        include 'Funcoes.php';
   
         $nomePersonagem = $_POST['nomePersonagem'];
         $sexoPersonagem = $_POST['sexo'];
@@ -101,7 +130,4 @@ if (isset($_POST['cadastroNormal'])) {
         $resposta = json_encode($pesquisa, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
       }
     
-
-
-}
 ?>

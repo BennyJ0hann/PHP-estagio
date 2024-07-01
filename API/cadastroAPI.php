@@ -18,7 +18,7 @@
     <h2>Cadastro de Personagem por API</h2>
     <div class="form-group row">
       <div class="col-3">
-        <form action="criar.php" method="post">
+        <form method="post">
           <label for="nome">Nome do personagem:</label>
           <input type="text" id="nome" name="nomePersonagem" class="form-control"><br>
 
@@ -35,9 +35,6 @@
             <input class="form-check-input" type="radio" name="sexo" id="Desconhecido" value="Desconhecido">
             <label class="form-check-label" for="Desconhecido">Desconhecido</label>
           </div><br>
-
-
-
           <div class="col mb-2">
             <button type="submit1" value="ver" id="verCadastro" name="verTudo" class="btn btn-success">Ver
               Cadastros</button>
@@ -55,7 +52,7 @@
         </form>
       </div>
       <div class="col-9">
-        <form id="personagemForm" action="criar.php" method="post">
+        <form id="personagemForm" method="post">
           <?php
           foreach ($pesquisa as $personagem) {
 
@@ -68,7 +65,7 @@
           }
           ?>
           <div class="col mb-2">
-            <button type="submit" value="Confirmar" name="cadastrar" class="btn btn-primary">Cadastrar</button>
+            <button type="submit" value="Confirmar" name="cadastrarPersonagem" class="btn btn-primary">Cadastrar</button>
           </div>
         </form>
       </div>

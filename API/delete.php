@@ -15,7 +15,7 @@
   include 'criar.php';
   ?>
   <div class="container">
-    <form role="form" method="post" class="mt-5" action="criar.php">
+    <form role="form" method="post" class="mt-5">
       <div class="row text-left">
         <div class="col-5">
           <label for="idDeDelete">Digite o ID da pessoa q irá ser excluida:</label>

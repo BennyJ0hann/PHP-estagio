@@ -57,7 +57,7 @@
                         class="btn btn-primary">Voltar</button>
                 </div>
                 <div class="col text-left">
-                    <button type="submit" value="deletar" id="deletar" name="atualizar"
+                    <button type="submit" value="atualizar" id="atualizar" name="atualizar"
                         class="btn btn-success">Atualizar
                         Cadastro</button>
                 </div>

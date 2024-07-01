@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-6 text-start">
 
-            <button type="submit" value="cadastrar" id="cadastrar" name="verTudo" class="btn btn-info">Todos
+            <button type="submit" value="cadastrar" id="cadastrar" name="todosResgistros" class="btn btn-info">Todos
               Registros</button>
           </div>
           <div class="col-6 text-end">
