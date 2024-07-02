@@ -162,15 +162,6 @@ function printConsulta($resultado)
 function insertMysql($nomePessoa, $cidadePessoa, $sexo, $dtNascimento)
 {
     include 'db.php';
-    if (empty($nomePessoa)) {
-        echo '<p class="text-danger">Informe o nome da pessoa.</p>';
-    } else if (empty($cidadePessoa)) {
-        echo '<p class="text-danger">Informe corretamente de onde é originário.</p>';
-    } else if (empty($dtNascimento)) {
-        echo '<p class="text-danger">Informe corretamente a data de nascimento.</p>';
-    } else if (empty($sexo)) {
-        echo '<p class="text-danger">Marque a opção que melhor te representa.</p>';
-    } else {
         $sql = "INSERT INTO pessoas (name, cidade, sexo, data_nascimento) VALUES ('$nomePessoa', '$cidadePessoa', '$sexo', '$dtNascimento')";
         if ($conexao->query($sql) === TRUE) {
             echo "Novo cadastro adicionado ao Banco <br>";
@@ -181,9 +172,6 @@ function insertMysql($nomePessoa, $cidadePessoa, $sexo, $dtNascimento)
         }
         
     }
-    
-
-}
 #UPDATE
 function updateMysql($id, $sexo, $nomePessoa, $cidadePessoa, $dtNascimentoSemFormatar)
 {
