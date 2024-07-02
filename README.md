@@ -13,7 +13,7 @@ Projeto 3 - SimuladorParcelamento: Programa feito para consultar quanto de juros
 Projeto 4 - CadastroPersonagem: Programa feito para cadastrar personagens usando - Nome do Personagem, Primeira Aparição, Maior Feito, Quem é, Vivo ou Morto, Causa da Morte (se estiver morto)
 Imagem do personagem (link web)- O programa apresntará todos os personagens cadastrados em uma sessão de cards iguais ao projeto 'HTML.CSS.JS-estagio/Personagens/';
 
-projeto 5.1 - CadastroPessoasPreset(MYSQL): Programa feito para cadastrar pessoas no banco de dados MYSQL e fazer 4 consultas através de buttons com consultas presetadas;
+projeto 5.1 - CadastroPessoasPreset(MYSQL)(não funcional, banco de dados utilizado nos projetos seguintes): Programa feito para cadastrar pessoas no banco de dados MYSQL e fazer 4 consultas através de buttons com consultas presetadas;
 
 projeto 5.2 - CadastroPessoas(MYSQL): Programa feito para cadastrar pessoas no banco de dados MYSQL e fazer consultas por campos através de select mostrando todos os campos existentes no banco de dados;
 
