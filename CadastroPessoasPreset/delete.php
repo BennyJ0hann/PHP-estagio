@@ -60,7 +60,7 @@ $resultado = $conexao->query($sql);
     echo "Sem nenhum cadastro";
 }
 if (isset($_POST['voltar'])) {
-    header('Location: /CadastroPessoas/read.php');
+    header('Location: /CadastroPessoasPreset/read.php');
     exit();
 }   
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

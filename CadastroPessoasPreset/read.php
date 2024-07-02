@@ -13,15 +13,15 @@
     include 'db.php';
     
     if (isset($_POST['cadastrar'])) {
-        header('Location: /CadastroPessoas/cadastroPessoas.php');
+        header('Location: /CadastroPessoasPreset/cadastroPessoas.php');
         exit();
     }
     if (isset($_POST['deletar'])) {
-        header('Location: /CadastroPessoas/delete.php');
+        header('Location: /CadastroPessoasPreset/delete.php');
         exit();
     }
     if (isset($_POST['atualizar'])) {
-        header('Location: /CadastroPessoas/update.php');
+        header('Location: /CadastroPessoasPreset/update.php');
         exit();
     }
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
