@@ -6,7 +6,21 @@ Diretorios existentes e o que contém:
 
 Projeto 1 - ConsultaSalário: Programa feito para consultar através das horas trabalhadas e remuneradas o salário e quanto é descontado em Imposto de Renda, INSS e Sindicato;
 
-Projeto 1 - CadastroDeVeículos: Programa feito para cadastrar veículos dizendo o modelo do carro, frabricante, cor do veículo, a quantidade de portas e o ano do carro. De pois de inseridos estão feitas alguns exemplos de consultas como: Modelo e ano dos carros cadastrados, Modelos na cor prata, Veículos-Cores-quantidadeDePortas, Veículos da Ford e Veículos com o ano de fabricação igual ou superior a 2013.
+Projeto 2 - CadastroDeVeículos: Programa feito para cadastrar veículos dizendo o modelo do carro, frabricante, cor do veículo, a quantidade de portas e o ano do carro. De pois de inseridos estão feitas alguns exemplos de consultas como: Modelo e ano dos carros cadastrados, Modelos na cor prata, Veículos-Cores-quantidadeDePortas, Veículos da Ford e Veículos com o ano de fabricação igual ou superior a 2013.
+
+Projeto 3 - SimuladorParcelamento: Programa feito para consultar quanto de juros irá pagar por quantidade e total de parcelas selecionadas;
+
+Projeto 4 - CadastroPersonagem: Programa feito para cadastrar personagens usando - Nome do Personagem, Primeira Aparição, Maior Feito, Quem é, Vivo ou Morto, Causa da Morte (se estiver morto)
+Imagem do personagem (link web)- O programa apresntará todos os personagens cadastrados em uma sessão de cards iguais ao projeto 'HTML.CSS.JS-estagio/Personagens/';
+
+projeto 5.1 - CadastroPessoasPreset(MYSQL): Programa feito para cadastrar pessoas no banco de dados MYSQL e fazer 4 consultas através de buttons com consultas presetadas;
+
+projeto 5.2 - CadastroPessoas(MYSQL): Programa feito para cadastrar pessoas no banco de dados MYSQL e fazer consultas por campos através de select mostrando todos os campos existentes no banco de dados;
+
+projeto 5.3 - API(MYSQL)(API): Programa feito para cadastrar pessoas no banco de dados MYSQL, pesquisar e selecionar para cadastrar personagens de Rick and Morty atravez da API: 
+'https://rickandmortyapi.com/'.
+E tambem fazer consultas por campos através de select mostrando todos os campos existentes no banco de dados;
+
 
 ## Pré-requisitos
 
